@@ -6,7 +6,7 @@ def ma_dv_hotline(cityName):
   br.addheaders = [('User-agent', 'Firefox')]
   br.open("http://civilinquiry.jud.ct.gov/")
   br.select_form(id="searchprograms")
-  br”[ctl00$ContentPlaceHolder1$txtCityTown" ] = [cityName]
+  br["ctl00$ContentPlaceHolder1$txtCityTown"] = [cityName]
   response = br.submit()
   cleanResponse = response.read().decode("utf-8") #get rid of bytes-type error and white space
   cleanResponse = cleanResponse.replace('<!DOCTYPE html>','')
