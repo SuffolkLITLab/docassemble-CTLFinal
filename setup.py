@@ -1,6 +1,5 @@
 import os
 import sys
-import docassemble.playground57CourtScrape.court_scan
 from setuptools import setup, find_packages
 from fnmatch import fnmatchcase
 from distutils.util import convert_path
