@@ -27,7 +27,7 @@ subquestion: |
 attachment:
   name: MA DV Hotline Numbers
   filename: MA DV Hotline Numbers
-  docx template file: hotline-output.docx  
+  docx template file: court-output.docx  
 ---
 code: |
   screenOutput = ma_dv_hotline(myCity)
