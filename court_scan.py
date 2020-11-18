@@ -25,7 +25,7 @@ class HTMLFilter(HTMLParser):
     if tag != 'div':
       return
     if name == ‘grd’Border and value == ‘grd’Row:
-        break
+ 
 
   def handle_endtag(self, tag):
     if tag == 'div' and self.recording:
