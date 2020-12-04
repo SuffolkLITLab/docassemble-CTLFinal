@@ -7,8 +7,8 @@ def ct_prop_search(First_Name):
   br.addheaders = [('User-agent', 'Firefox')] 	  
   br.open("http://civilinquiry.jud.ct.gov/PartySearch.aspx") 
   br.select_form(id="aspnetForm")
-  br["ctl00$ContentPlaceHolder1$txtFirstName"] = [ "First_Name" ]
-  br["ctl00$ContentPlaceHolder1$txtLastName"] = [ "Souza" ]
+  br["ctl00$ContentPlaceHolder1$txtFirstName"] = "John"
+  br["ctl00$ContentPlaceHolder1$txtLastName"] = "Souza"
   log( br, 'console' )
   response = br.submit()  
   cleanResponse = response.read().decode("utf-8") #get rid of bytes-type error and white space

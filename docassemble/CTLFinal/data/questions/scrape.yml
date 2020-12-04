@@ -5,30 +5,27 @@ metadata:
 modules:
   - .court_scan
 ---
-features: 
-  css: dv-hotline.css  
+#features: 
+  #css: dv-hotline.css  
 ---
 id: order
 mandatory: True
 code: | 
-  First_Name
   output = ct_prop_search(First_Name)
   end
 ---
 question: |  
-  To lookup for a case in Connecticut, please enter a name
+  To lookup for a case in Connecticut, enter a name
 fields:
   - First Name: First_Name
   - Last Name: Last_Name
 ---
 event: end
 question: |
-  ##Credit: we are using the search engine provided by https://janedoe.org.<br/>
-  
   ##This project is unfinished. It still needs to add "zip" as an input option, and the docx output needs more work.
 subquestion: |
   ${ output }
-#${ screenOutput }
+  ${ screenOutput }
 #attachment:
 #  name: MA DV Hotline Numbers
 #  filename: MA DV Hotline Numbers
