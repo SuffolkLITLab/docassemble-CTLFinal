@@ -1,19 +1,21 @@
 from docassemble.base.util import log
 from mechanize import Browser
-def ct_prop_search(First_Name):
+import re
+def ct_prop_search(firstName, lastName):
   br = Browser()    
   br.set_handle_robots(False)   # ignore robots
   br.set_handle_refresh(False)  # can sometimes hang without this
   br.addheaders = [('User-agent', 'Firefox')] 	  
   br.open("http://civilinquiry.jud.ct.gov/PartySearch.aspx") 
   br.select_form(id="aspnetForm")
-  br["ctl00$ContentPlaceHolder1$txtFirstName"] = "John"
-  br["ctl00$ContentPlaceHolder1$txtLastName"] = "Souza"
-  log( br, 'console' )
+  br["ctl00$ContentPlaceHolder1$txtFirstName"] = firstName
+  br["ctl00$ContentPlaceHolder1$txtLastName"] = lastName
   response = br.submit()  
   cleanResponse = response.read().decode("utf-8") #get rid of bytes-type error and white space
   cleanResponse = cleanResponse.replace('<!DOCTYPE html>','')
-  return cleanResponse
+  caseName = re.search("(\w+\D\s\w+\D\w+\s(?:V|v)\D\s\w+\D\s\w+)", cleanResponse)
+  log( caseName.groups()[0] , 'console' )
+  return caseName.groups()[0]
 
 #parse the output with HTMLParser
 #from html.parser import HTMLParser

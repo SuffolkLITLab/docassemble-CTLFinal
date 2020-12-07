@@ -11,7 +11,7 @@ modules:
 id: order
 mandatory: True
 code: | 
-  output = ct_prop_search(First_Name)
+  output = ct_prop_search(First_Name, Last_Name)
   end
 ---
 question: |  
@@ -20,19 +20,22 @@ fields:
   - First Name: First_Name
   - Last Name: Last_Name
 ---
+comment: | 
+  Docket number span id = ctl00_ContentPlaceHolder1_CaseDetailHeader1_lblDocketNo
+---
 event: end
 question: |
   ##This project is unfinished. It still needs to add "zip" as an input option, and the docx output needs more work.
 subquestion: |
   ${ output }
-  ${ screenOutput }
+#  ${ screenOutput }
 #attachment:
 #  name: MA DV Hotline Numbers
 #  filename: MA DV Hotline Numbers
 #  docx template file: court-output.docx  
 ---
 code: |
-  screenOutput = ct_prop_search(First_Name)
+  screenOutput = ct_prop_search(First_Name, Last_Name)
   #Docs output
   #item = HTMLFilter()
   #item.feed(screenOutput)
