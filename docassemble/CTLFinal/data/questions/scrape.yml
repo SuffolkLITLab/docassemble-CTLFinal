@@ -25,7 +25,7 @@ comment: |
 ---
 event: end
 question: |
-  ##This project is unfinished. It still needs to add "zip" as an input option, and the docx output needs more work.
+  ##This is the case name and docket number 
 subquestion: |
   ${ output }
 #  ${ screenOutput }
@@ -39,4 +39,8 @@ code: |
   #Docs output
   #item = HTMLFilter()
   #item.feed(screenOutput)
-  #output = item.text
+  #output = ct_prop_search(First_Name, Last_Name)
+  
+  
+  
+  

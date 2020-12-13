@@ -13,10 +13,11 @@ def ct_prop_search(firstName, lastName):
   response = br.submit()  
   cleanResponse = response.read().decode("utf-8") #get rid of bytes-type error and white space
   cleanResponse = cleanResponse.replace('<!DOCTYPE html>','')
-  caseName = re.search("(\w+\D\s\w+\D\w+\s(?:V|v)\D\s\w+\D\s\w+)", cleanResponse)
-  log( caseName.groups()[0] , 'console' )
-  return caseName.groups()[0]
-
+  case_names = re.findall("(\w+\D\s\w+\D\w+\s(?:V|v)\D\s\w+\D\s\w+)", cleanResponse)
+  #log( case_name.groups()[0] , 'console' )
+  docket_numbers = re.findall("(\w{8}\W\w{3}\D\w{2}\D\d{2}\D\d{7}\D\w{1})", cleanResponse)
+  return case_names, docket_numbers
+    
 #parse the output with HTMLParser
 #from html.parser import HTMLParser
 #class HTMLFilter(HTMLParser):
