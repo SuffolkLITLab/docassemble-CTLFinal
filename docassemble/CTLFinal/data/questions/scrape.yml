@@ -5,33 +5,42 @@ metadata:
 modules:
   - .court_scan
 ---
-features: 
-  css: dv-hotline.css  
+#features: 
+  #css: dv-hotline.css  
+---
+id: order
+mandatory: True
+code: | 
+  output = ct_prop_search(First_Name, Last_Name)
+  end
 ---
 question: |  
-  To lookup for DV service information in Massachusetts, like hotline phone and office hours, please enter a city name.
-subquestion: |  
-  The city must be in MA.
-  
+  To lookup for a case in Connecticut, enter a name
 fields:
-  - City name: myCity
-    default: Acton
+  - First Name: First_Name
+  - Last Name: Last_Name
 ---
-mandatory: True
+comment: | 
+  Docket number span id = ctl00_ContentPlaceHolder1_CaseDetailHeader1_lblDocketNo
+---
+event: end
 question: |
-  ##Credit: we are using the search engine provided by https://janedoe.org.<br/>
-  
-  ##This project is unfinished. It still needs to add "zip" as an input option, and the docx output needs more work.
-subquestion: |  
-  ${ screenOutput }
-attachment:
-  name: MA DV Hotline Numbers
-  filename: MA DV Hotline Numbers
-  docx template file: court-output.docx  
+  ##This is the case name and docket number 
+subquestion: |
+  ${ output }
+#  ${ screenOutput }
+#attachment:
+#  name: MA DV Hotline Numbers
+#  filename: MA DV Hotline Numbers
+#  docx template file: court-output.docx  
 ---
 code: |
-  screenOutput = ma_dv_hotline(myCity)
+  screenOutput = ct_prop_search(First_Name, Last_Name)
   #Docs output
-  item = HTMLFilter()
-  item.feed(screenOutput)
-  output = item.text
+  #item = HTMLFilter()
+  #item.feed(screenOutput)
+  #output = ct_prop_search(First_Name, Last_Name)
+  
+  
+  
+  
