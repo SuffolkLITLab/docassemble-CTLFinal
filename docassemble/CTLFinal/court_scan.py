@@ -13,10 +13,27 @@ def ct_prop_search(firstName, lastName):
   response = br.submit()  
   cleanResponse = response.read().decode("utf-8") #get rid of bytes-type error and white space
   cleanResponse = cleanResponse.replace('<!DOCTYPE html>','')
-  case_names = re.findall("(\w+\D\s\w+\D\w+\s(?:V|v)\D\s\w+\D\s\w+)", cleanResponse)
-  #log( case_name.groups()[0] , 'console' )
-  docket_numbers = re.findall("(\w{8}\W\w{3}\D\w{2}\D\d{2}\D\d{7}\D\w{1})", cleanResponse)
+  case_names = re.findall("(?<=(?:td><td align=\"left\">)).*\s(?:V|v)(?:.*)(?=<\/td>)", cleanResponse)
+  docket_numbers = re.findall("((?<=DocketNo\=)\w{3}\D\w{2}\D\d{2}\D\d{7}\D\w{1})", cleanResponse)
   return case_names, docket_numbers
+
+#def docket_number_search(docketNumber):
+#  br = Browser()    
+#  br.set_handle_robots(False)   # ignore robots
+#  br.set_handle_refresh(False)  # can sometimes hang without this
+#  br.addheaders = [('User-agent', 'Firefox')] 	  
+#  br.open("http://civilinquiry.jud.ct.gov/GetDocket.aspx") 
+#  br.select_form(id="aspnetForm")
+#  br["ctl00$ContentPlaceHolder1$txtFullDocketNo"] = docketNumber
+#  response = br.submit()  
+#  cleanResponse = response.read().decode("utf-8") #get rid of bytes-type error and white space
+#  cleanResponse = cleanResponse.replace('<!DOCTYPE html>','')
+#  case_names = re.findall("(?<=(?:td><td align=\"left\">)).*\s(?:V|v)(?:.*)(?=<\/td>)", cleanResponse)
+#  docket_numbers = re.findall("((?<=DocketNo\=)\w{3}\D\w{2}\D\d{2}\D\d{7}\D\w{1})", cleanResponse)
+#  return case_names, docket_numbers
+
+
+#log( case_name.groups()[0] , 'console' )
     
 #parse the output with HTMLParser
 #from html.parser import HTMLParser
