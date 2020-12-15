@@ -1,31 +1,28 @@
 ---
 metadata: 
-  title: MA - DV hotline service lookup
+  title: Connecticut Superior Court Case Lookup - Civil, Family, Housing and Small Claims 
 ---
 modules:
   - .court_scan
 ---
-#features: 
-  #css: dv-hotline.css  
+objects:
+  - case: DAList.using(ask_number=False)
 ---
 id: order
 mandatory: True
 code: | 
-  output = ct_prop_search(First_Name, Last_Name)
+  output = case_search(First_Name, Last_Name)
   end
 ---
 question: |  
-  To lookup for a case in Connecticut, enter a name
+  Find the docket number for your case by searching a party's name   
 fields:
   - First Name: First_Name
   - Last Name: Last_Name
 ---
-comment: | 
-  Docket number span id = ctl00_ContentPlaceHolder1_CaseDetailHeader1_lblDocketNo
----
 event: end
 question: |
-  ##This is the case name and docket number 
+  ##Search Results 
 subquestion: |
   ${ output }
 #  ${ screenOutput }
@@ -35,11 +32,11 @@ subquestion: |
 #  docx template file: court-output.docx  
 ---
 code: |
-  screenOutput = ct_prop_search(First_Name, Last_Name)
+  #screenOutput = case_search(First_Name, Last_Name)
   #Docs output
   #item = HTMLFilter()
   #item.feed(screenOutput)
-  #output = ct_prop_search(First_Name, Last_Name)
+  #output = case_search(First_Name, Last_Name)
   
   
   
