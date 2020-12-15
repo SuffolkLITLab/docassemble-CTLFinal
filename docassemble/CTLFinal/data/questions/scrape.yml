@@ -1,6 +1,6 @@
 ---
 metadata: 
-  title: Connecticut Superior Court Case Lookup - Civil, Family, Housing and Small Claims 
+  title: Connecticut Superior Court Case Lookup Scrape 
 ---
 modules:
   - .court_scan
@@ -11,6 +11,7 @@ objects:
 id: order
 mandatory: True
 code: | 
+  intro_screen
   knows_docket
   if not knows_docket:
     output = case_search(First_Name, Last_Name)
@@ -18,7 +19,15 @@ code: |
   docket_number
   case_name
   download
+---
+id: intro screen
+question: |
+  Example Interview Integrating the Connecticut Superior Court Case Court Website Scraper 
+subquestion: | 
+  **Disclaimer**: This interview is a demonstration of how the web scraper could be built into interviews to help users find their court information without having to leave the interview and follow separate instructions. It produces an example document and is for demonstration only. 
   
+  Case information collected is from the [State of Connecticut Judicial Branch Superior Court Case Look-up Site](http://civilinquiry.jud.ct.gov/)
+continue button field: intro_screen
 ---
 id: need help?
 question: | 
@@ -27,7 +36,7 @@ yesno: knows_docket
 ---
 id: search criteria
 question: |  
-  Find the docket number for your case by searching a party's name
+  Find the docket number and case name for your court case by searching the name of a person involved in the case 
 subquestion: | 
   Search the Connecticut Superior Court Case Lookup for Civil, Family, Housing and Small Claims to find your docket number and case name 
 fields:
@@ -47,8 +56,8 @@ fields:
   - no label: case_name
 ---
 question: |
-  ##Search Results for " ${First_Name} ${Last_Name}" [BR]
-  Copy the case name and docket number for your case for the next screen
+  ##Search Results for "${First_Name} ${Last_Name}" [BR]
+  Copy the case name and docket number for your case for the next questions [BR] 
 subquestion: |
   ${ output }
 continue button field: copy_information
@@ -58,14 +67,7 @@ attachment:
   - name: CT Case Information
     filename: CT Case Information
     variable name: scrape_attachment
-    docx template file: scrapetitle.docx  
----
-code: |
-  #screenOutput = case_search(First_Name, Last_Name)
-  #Docs output
-  #item = HTMLFilter()
-  #item.feed(screenOutput)
-  #output = case_search(First_Name, Last_Name)  
+    docx template file: scrapetitle.docx   
 ---
 id: download form
 event: download
@@ -73,7 +75,7 @@ decoration: file-download
 question: |
   Here is your form 
 subquestion: |
-  
+
   ${ form_to_file_no_cover }  
     
   Or download below:

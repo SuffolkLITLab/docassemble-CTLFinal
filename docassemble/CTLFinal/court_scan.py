@@ -10,6 +10,7 @@ def case_search(firstName, lastName):
   br.select_form(id="aspnetForm")
   br["ctl00$ContentPlaceHolder1$txtFirstName"] = firstName
   br["ctl00$ContentPlaceHolder1$txtLastName"] = lastName
+  br.find_control(name="ctl00$ContentPlaceHolder1$ddlLastNameSearchType", kind="list").value = ["Is Equal To"]
   response = br.submit()  
   cleanResponse = response.read().decode("utf-8") #get rid of bytes-type error and white space
   cleanResponse = cleanResponse.replace('<!DOCTYPE html>','')
