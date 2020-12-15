@@ -15,18 +15,14 @@ code: |
   end
 ---
 question: |  
-  To find your case information enter your name 
-subquestion: |
-  name | number
-  - | - 
-  aubrie | 123
+  Find the docket number for your case by searching a party's name   
 fields:
   - First Name: First_Name
   - Last Name: Last_Name
 ---
 event: end
 question: |
-  ##This is the case name and docket number 
+  ##Search Results 
 subquestion: |
   ${ output }
 #  ${ screenOutput }

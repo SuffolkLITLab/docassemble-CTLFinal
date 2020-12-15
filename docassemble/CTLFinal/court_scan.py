@@ -16,7 +16,7 @@ def case_search(firstName, lastName):
   # case name regex
   case_names = re.findall("(?<=(?:td><td align=\"left\">)).*\s(?:V|v)(?:.*)(?=<\/td>)", cleanResponse)
   docket_numbers = re.findall("((?<=DocketNo\=)\w{3}\D\w{2}\D\d{2}\D\d{7}\D\w{1})", cleanResponse)
-  table =  "name | number\n- | -" #heading row 
+  table =  "Case Name | Docket Number\n- | -" #heading row 
   for x in range(len(case_names)):
     table = table +  "\n" + case_names[x] + " | " + docket_numbers[x]
   return table
