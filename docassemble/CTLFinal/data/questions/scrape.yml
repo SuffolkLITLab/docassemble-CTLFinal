@@ -11,33 +11,78 @@ objects:
 id: order
 mandatory: True
 code: | 
-  output = case_search(First_Name, Last_Name)
-  end
+  knows_docket
+  if not knows_docket:
+    output = case_search(First_Name, Last_Name)
+    copy_information
+  docket_number
+  case_name
+  download
+  
 ---
+id: need help?
+question: | 
+  Do you know your docket number? 
+yesno: knows_docket
+---
+id: search criteria
 question: |  
-  Find the docket number for your case by searching a party's name   
+  Find the docket number for your case by searching a party's name
+subquestion: | 
+  Search the Connecticut Superior Court Case Lookup for Civil, Family, Housing and Small Claims to find your docket number and case name 
 fields:
   - First Name: First_Name
   - Last Name: Last_Name
 ---
-event: end
+id: docket number
 question: |
-  ##Search Results 
+  What is the docket number for your case?
+fields:
+  - no label: docket_number
+---
+id: docket number
+question: |
+  What is the case name for your case?
+fields:
+  - no label: case_name
+---
+question: |
+  ##Search Results for " ${First_Name} ${Last_Name}" [BR]
+  Copy the case name and docket number for your case for the next screen
 subquestion: |
   ${ output }
-#  ${ screenOutput }
-#attachment:
-#  name: MA DV Hotline Numbers
-#  filename: MA DV Hotline Numbers
-#  docx template file: court-output.docx  
+continue button field: copy_information
+---
+id: final attachment
+attachment:
+  - name: CT Case Information
+    filename: CT Case Information
+    variable name: scrape_attachment
+    docx template file: scrapetitle.docx  
 ---
 code: |
   #screenOutput = case_search(First_Name, Last_Name)
   #Docs output
   #item = HTMLFilter()
   #item.feed(screenOutput)
-  #output = case_search(First_Name, Last_Name)
+  #output = case_search(First_Name, Last_Name)  
+---
+id: download form
+event: download
+decoration: file-download
+question: |
+  Here is your form 
+subquestion: |
   
-  
+  ${ form_to_file_no_cover }  
+    
+  Or download below:
+
+progress: 100
+section: download
+attachment code: scrape_attachment
+---
+code: |
+  form_to_file_no_cover = scrape_attachment
   
   
