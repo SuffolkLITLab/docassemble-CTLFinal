@@ -10,15 +10,16 @@ def case_search(firstName, lastName):
   br.select_form(id="aspnetForm")
   br["ctl00$ContentPlaceHolder1$txtFirstName"] = firstName
   br["ctl00$ContentPlaceHolder1$txtLastName"] = lastName
+  br.find_control(name="ctl00$ContentPlaceHolder1$ddlLastNameSearchType", kind="list").value = ["Is Equal To"]
   response = br.submit()  
   cleanResponse = response.read().decode("utf-8") #get rid of bytes-type error and white space
   cleanResponse = cleanResponse.replace('<!DOCTYPE html>','')
-  # case name regex
+  # regex
   case_names = re.findall("(?<=(?:td><td align=\"left\">)).*\s(?:V|v)(?:.*)(?=<\/td>)", cleanResponse)
   docket_numbers = re.findall("((?<=DocketNo\=)\w{3}\D\w{2}\D\d{2}\D\d{7}\D\w{1})", cleanResponse)
   table =  "Case Name | Docket Number\n- | -" #heading row 
-  for x in range(len(case_names)):
-    table = table +  "\n" + case_names[x] + " | " + docket_numbers[x]
+  for x in range(len(case_names)): 
+    table = "\n"+ table +  "\n" + case_names[x] + " | " + docket_numbers[x]
   return table
   
 

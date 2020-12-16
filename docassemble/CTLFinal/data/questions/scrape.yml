@@ -1,43 +1,99 @@
 ---
 metadata: 
-  title: Connecticut Superior Court Case Lookup - Civil, Family, Housing and Small Claims 
+  title: Connecticut Superior Court Case Lookup Scrape 
 ---
 modules:
   - .court_scan
 ---
-objects:
-  - case: DAList.using(ask_number=False)
----
 id: order
 mandatory: True
 code: | 
-  output = case_search(First_Name, Last_Name)
-  end
+  intro_screen
+  knows_docket
+  if not knows_docket:
+    output = case_search(First_Name, Last_Name)
+    copy_information
+  docket_number
+  case_name
+  download
 ---
+id: intro screen
+question: |
+  Example Interview Integrating the Connecticut Superior Court Case Court Website Scraper 
+subquestion: | 
+  **Disclaimer**: This interview is a demonstration of how the web scraper could be built into interviews to help users find their court information without having to leave the interview and follow separate instructions. It produces an example document and is for demonstration only. 
+  
+  Case information collected is from the [State of Connecticut Judicial Branch Superior Court Case Look-up Site](http://civilinquiry.jud.ct.gov/)
+continue button field: intro_screen
+---
+id: need help?
+question: | 
+  Do you know your docket number? 
+yesno: knows_docket
+---
+id: search criteria
 question: |  
-  Find the docket number for your case by searching a party's name   
+  Search for your docket number and case name 
+subquestion: | 
+  Enter the name of a person involved in your case to search the Connecticut Superior Court Case Lookup to find your case information
 fields:
   - First Name: First_Name
   - Last Name: Last_Name
 ---
-event: end
+id: docket number
 question: |
-  ##Search Results 
+  What is the docket number for your case?
 subquestion: |
+  Docket Number Format: XXX-XX-12-3456789-X
+fields:
+  - no label: docket_number
+---
+id: docket number
+question: |
+  What is the case name for your case?
+fields:
+  - no label: case_name
+---
+id: display result
+question: |
+  Search Results for "${First_Name} ${Last_Name}" 
+subquestion: |
+  Copy or write down the case name and docket number for your case [BR] 
+  
+  Docket Number Format: XXX-XX-12-3456789-X
+  
   ${ output }
-#  ${ screenOutput }
-#attachment:
-#  name: MA DV Hotline Numbers
-#  filename: MA DV Hotline Numbers
-#  docx template file: court-output.docx  
+  
+   If you do not see your case you may need to search on the [State of Connecticut Judicial Branch Superior Court Case Look-up Site](http://civilinquiry.jud.ct.gov/)
+
+continue button field: copy_information
+back button: True
+back button label: |
+  Search again
+---
+id: final attachment
+attachment:
+  - name: CT Case Information
+    filename: CT Case Information
+    variable name: scrape_attachment
+    docx template file: scrapetitle.docx   
+---
+id: download form
+event: download
+decoration: file-download
+question: |
+  Here is your form 
+subquestion: |
+
+  ${ form_to_file_no_cover }  
+    
+  Or download below:
+
+progress: 100
+section: download
+attachment code: scrape_attachment
 ---
 code: |
-  #screenOutput = case_search(First_Name, Last_Name)
-  #Docs output
-  #item = HTMLFilter()
-  #item.feed(screenOutput)
-  #output = case_search(First_Name, Last_Name)
-  
-  
+  form_to_file_no_cover = scrape_attachment
   
   
