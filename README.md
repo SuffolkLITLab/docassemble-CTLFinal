@@ -6,45 +6,55 @@ A docassemble extension.
 
 Aubrie Souza, asouza@su.suffolk.edu
 
+## Demo Video  
+
 ## Project Biography
-
-**About the Document Assembly Line Project** 
-
-The Document Assembly Line Project is producing mobile friendly, online court forms that can be downloaded or sent directly to Massachusetts courts. The project is an prototype to demonstrate that the existing forms could impliment a web scrapper to that assist the users in filling out their form inside the framework, rather than directing them to gather the information themselves from court websites. 
 
 **TLDR:**
 
-The Document Assembly Line run out of Suffolk University Law School's Legal Innovation and Technology Lab set out to address the access to justice gap created by the COVID-19 pandemic. The website scraper is intended as a prototype for a future scraper that could be built into existing interviews rather than as a standalone. 
+The Document Assembly Line Project is producing mobile friendly, online court forms that can be downloaded or sent directly to Massachusetts courts. This repo contains a prototype to demonstrate that the existing forms could implement a web scrapper to assist the users in filling out their form inside the interview framework rather than directing them to gather the information themselves from court websites. You will notice that this scrapes the Connecticut case look up site rather than Massachusetts; the Massachusetts site has a RECAPTCHA that presented technical challenges not within my abilities at the start of the project. 
 
 **Problem:**
 
-In March 2020, the COVID-19 pandemic hit and courts around the country had to close their doors to the public. This left those already struggling with access to the court and representation with no one to turn to. In Massachusetts, there were stories of individuals calling the court clerks to fill out forms over the phone but not solution for anyone seeking help.
+In March 2020, the COVID-19 pandemic hit and courts around the country had to close their doors to the public. This left those already struggling with access to the court and representation with no one to turn to. In Massachusetts, there were stories of individuals calling the court clerks to fill out forms over the phone but this was not a long term solution for anyone, not the clerks nor those seeking help. 
 
-The Document Assembly Line Project sought to address the gap by creating mobile-friendly, online versions of court forms and pro se materials. Since March, volunteers from all over the world have jumped in to volunteer their time to bring these forms to life, focusing first on urgent matters related to housing and domestic violence. Today, the project has 19 unique interviews to help people address urgent legal issues, with more reaching production every day. Using these interviews, pro se users can produce their own legal document from their cell phones or computers and submit the work directly to the court or provide instructions for filing where direct filing is not available.  
+The Document Assembly Line Project sought to address the access gap by creating mobile-friendly, online versions of court forms and pro se materials. Since March, volunteers from all over the world have jumped in to volunteer their time to bring these forms to life. The team  focused on urgent matters related to housing and domestic violence first, and is expanding to address more regular filings at the trial and appellate level. Today, the project has 19 unique interviews to help people address urgent legal issues, with more reaching production every day. Using these interviews, pro se users can produce their own legal document from their cell phones or computers. Some forms can be submitted directly to the court where others provide instructions to contact the court on how to proceed with filing. 
+
+I joined the project in June and saw the court filing required information that a user is unlikely to remember or know off the top of their hand. The Document Assembly Line has the instructions ([see example](https://github.com/SuffolkLITLab/docassemble-CTLFinal/blob/main/instructions.png)) on how to find all this necessary information. However, following these instructions requires the user leave the interview, follow the instructions to another source for information, accurately parse their information, and bring it back into the interview. This is not a seamless experience; it disrupts the user in the middle of the interview. For those who are not familiar with legal information it may be overwhelming, if you are disabled or do not have the ability to manage two consecutive tasks it is a bigger ask than we think as regular users of these systems. However, the courts often have a lot of this information already stored on their court websites. 
+
+**This Product: **
+
+
+My goal was to create a tool that would allow the user to search for their relevant information if they did not have it within the interview, never leaving the page. This project is a working protype of how a web scraper can be built right into the interview so the user can look up their case without leaving the interview. 
+
+The web scrapper takes simple search criteria, a single party's first name and last name, most likely the user themselves, and searches the CT Judicial Court site. Then, it displays on the next page all cases that have a party with that name and their corresponding docket numbers. For some, that list is short and you can quickly identify your party name. If you are John Smith, we see why the protype is just that, a demonstration, because it returns 50 This version has limitations, but it begins to build a tool that helps individuals stay within our framework, it guides them the same way, however a computer does the clicking and readings behind the scenes. They only have to read the results, rather than read the instructions, follow them accurately, capture the information properly, and bring it back into our framework as directed. It cuts out steps that are not building for the user. For this court website it takes 8 steps from opening a new tab to seeing your results to search through. Once the user encounters the tool it takes a single step, the input of the search criteria, to obtain the case information. It makes it simpler. 
 
 **Key Stakeholders:**
 
 The Document Assembly Line, court clerks, and the users of courtformsonline.org. 
 
-**The Product:**
-
-I joined the project in June and saw that consistently, the court filing required information that a user is unlikely to remember or know off hand. The Document Assembly Line has the instructions ([see example](https://github.com/SuffolkLITLab/docassemble-CTLFinal/blob/main/instructions.png))on how to find all this necessary information. However, following these instructions requires the user leave the interview, follow the instructions to another source for information, accurately parse their information, and bring it back into the interview. This is far from a seamless experience; it is a disruption in the middle of the interview. However, the courts often have a lot of this information already stored on their court websites. 
-
-My goal was to create a tool that would allow the user to search for their relevant information if they did not have it within the same interview. This project is a working protype of how a web scraper can be built right into the interview so the user can look up their case without leaving the interview. 
-
-The web scrapper takes simple search criteria, a single party's first name and last name, most likely the user themselves, and searches the CT Judicial Court site. It then, returns all cases that have a party with that name and their corresponding docket numbers. For some, that list is short and you can quickly identify your party name. If you are John Smith, we see why the protype is just that, a demonstration. This version has limitations, but it begins to build a tool that helps individuals stay within our framework, it guides them the same way, however a computer does the clicking and readings behind the scenes. They only have to read the results, rather than read the instructions, follow them accurately, capture the information properly, and bring it back into our framework as directed. It cuts out steps that are not building for the user. For this court website it takes 8 steps from opening a new tab to seeing your results to search through. Once the user encounters the tool it takes a single step, the input of the search criteria, to obtain the case information. It makes it simpler. 
-
 **What works:** 
 
-It works – this scraper can be used for Connecticut civil, family, housing and small claims cases in the Superior Court. It would let a user find their case name and docket number quickly within the platform. It is a demonstration of how allowing scrapping for these purposes can benefit individuals. I asked a tester how they would feel about using the results the response was that "Assuming I'm somewhat familiar with my case, this is great. I'd trust that answers were mine once I saw what I was looking for." It is true that the limited information requires that the user 
+* It works – this scraper can be used for Connecticut civil, family, housing and small claims cases in the Superior Court. It would let a user find their case name and docket number quickly within the platform. It is a demonstration of how allowing scraping for these purposes can benefit individuals. I asked a tester how they would feel about using the results the response was that "Assuming I'm somewhat familiar with my case, this is great. I'd trust that answers were mine once I saw what I was looking for." It is true that the limited information requires that the user to have some recognition. Now that I have an understanding of how to built out a scraper I would want to build more pieces in and consider what information is pulled in more to make it most helpful. 
+
+* An early tester provided feedback that they felt a need for instruction on what the results tell them. They weren't sure why there were dashes between sections of the docket number and if they needed them or if that was because the column returned in a weird format. I was having trouble adding test to the subquestion for id: display result because it would cause a break in formatting in the table. However, I realized that I needed to add a line break in the module rather than the yml and it allowed me to add the subquestion with information. 
+
 
 **Things to work on:**
 
-The search criteria assumes that the user wants to search exactly what is input for first and last name. Hidden from the user is that you can choose to search as "Starts with", "Contains", "Is Equal to" or "Sounds Like". The default choice on the site is "Starts with", but I have the computer selecting 
 
-An early tester provided feedback that they need a little instruction on what the results tell them. They weren't sure why there were dashes between sections of the docket number and if they needed them or if that was because the column returned in a weird format.  
+* The table is risk prone. Rather than creating sets that keeps the docket number paired with its corresponding case name, it runs two regex that separates them into categories. If there is a misalignment, all the cases below will be incorrect. Fixing this would require creating a regex that parses for both the docket and case name and then lower in the module separating the groups. 
+
+* 
 
 **Research:**
+
+This project started off as a legal research exercise. It was necessary to address the question of whether accessing the data held on the court websites by a web scraper was legal.  The Massachusetts Trial Court Electronic Case Access site terms prohibits any data harvester from accessing the database. Additionally, the site has a RECAPTCHAs. Recently, hiQ Labs, Inc v. LinkedIn Co., held that scraping publicly available data is not illegal under the Computer Fraud and Abuse act. 938 F. 3d 985 (9th Cir. 2019). The Massachusetts court website is public: you do not need a log in to access the entire site which makes it more public than the site in hiQ Labs, however, the express prohibition against scraping and navigating around the RECAPTCHAs presented a legal challenge as well as a technical one. Where the limited legal precedent tended to say that if we handled the RECAPTCHAs properly, such as displaying it to the user before running the scraper through the mass site, it was likely to withstand a legal challenge where circumventing the RECAPTCHA has been considered a violation of 17 U.S.C § 1201. However, handling the RECAPTCHA technically was a technical challenge that I was simply not prepared for. Oddly enough, an extension I have on my browsers to block online ads had hidden the RECAPTCHA from me while I was preparing to tackle the technical lift. Only when I opened it in an incognito browser did I realize I had hit a wall technically. 
+
+Feeling confident that the RECAPTCHA presented a problem both technically and legally, I turned to think about how to build the skills necessary to someday come back to the Massachusetts site. I explored alternative jurisdictions and being familiar with the Connecticut State website, found that their site was simple to navigate and did not present the same challenge. Their (terms and conditions) [https://www.jud.ct.gov/terms.htm] were less restrictive: the site prohibited bulk extraction and web harvesting aka web scraping, however this tool is not performing any task in bulk. The tools is designed to work the same as if the user is accessing the court, it reads it and then forgets the information. There is no bulk collection or mass access into the system. Additionally, if it became questionable, the court has a contact to reach out to for permission. Knowing that building the tool was a risk, I felt most comfortable using this site as tester. 
+
+Then, I had to research how to built the tool. I started looking at (another scraper) [https://github.com/SuffolkLITLab/docassemble-DVhotline/blob/master/docassemble/DVhotline/dv_hotline.py] that had been built by other members of the Assembly Line to figure out what I needed. I would be using the module "mechanize" which required reading through the documentation online. The documentation is all written in a manner that I am not familiar with – it uses technical terms that I have not encountered or have a real framework for in my coding experience. I've been informally trained so that I know how to make things work, but I'm not always able to explain why, I know what connects and how to write it but I don't have the information organized in anyway. So, the mechanize documentation was not very friendly. However, working with Michelle, she helped me understand what pieces I needed to pay attention to and what I could ignore, how to build slowly line by line, and how to see what was happening in my code by logging in the browser console. I was then able to expand upon my regex research and look into using more complicated capturing groups to extract the information. I often explored multiple options for technical solutions and presented them to Michelle who helped me understand why some would benefit me over others. Stack Overflow examples of others questions helped provide a visual example of what I was working on even if it wasn't going to look the same. The technical research is difficult to do on your own if you do not speak the language. I was lucky to have a partner who helped expand my ability to find the information for myself as I built up the skill.  
+
 
 **User Feedback:** 
 
@@ -73,9 +83,9 @@ Tester 3:
 
 Tester 4: 
 
-Could you get to the point where instead of writing  down the docket number and case name, you  could just click on them and it take you to it? Bring in the hyperlink so they can see the page 
+Could you get to the point where instead of writing down the docket number and case name, you could just click on them and it take you to it? Bring in the link so they can see the page? 
 
 Response: 
 
-Yes! I was able to capture the links to each page with my regex but it returns a dead link. My experience with capturing the proper parts of the HTML was too limited to make it work in the time frame. I was so close. It would be helpful to allow the user to check that the case information presented matches with theirs by seeing the whole page. For example, I saw plenty case names that were the same, but had differnt docket numbers. It is definetly a needed feature. 
+Yes! I was able to capture the links to each page with my regex but it returns a dead link. My experience with capturing the proper parts of the HTML was too limited to make the links work in the time frame. I was so close. It would be helpful to allow the user to check that the case information presented matches with theirs by seeing the whole page. For example, I saw plenty case names that were the same, but had different docket numbers. It is definitely a needed feature. 
 
