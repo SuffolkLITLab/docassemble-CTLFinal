@@ -5,9 +5,6 @@ metadata:
 modules:
   - .court_scan
 ---
-objects:
-  - case: DAList.using(ask_number=False)
----
 id: order
 mandatory: True
 code: | 
@@ -36,9 +33,9 @@ yesno: knows_docket
 ---
 id: search criteria
 question: |  
-  Find the docket number and case name for your court case by searching the name of a person involved in the case 
+  Search for your docket number and case name 
 subquestion: | 
-  Search the Connecticut Superior Court Case Lookup for Civil, Family, Housing and Small Claims to find your docket number and case name 
+  Enter the name of a person involved in your case to search the Connecticut Superior Court Case Lookup to find your case information
 fields:
   - First Name: First_Name
   - Last Name: Last_Name
@@ -46,6 +43,8 @@ fields:
 id: docket number
 question: |
   What is the docket number for your case?
+subquestion: |
+  Docket Number Format: XXX-XX-12-3456789-X
 fields:
   - no label: docket_number
 ---
@@ -55,12 +54,22 @@ question: |
 fields:
   - no label: case_name
 ---
+id: display result
 question: |
-  ##Search Results for "${First_Name} ${Last_Name}" [BR]
-  Copy the case name and docket number for your case for the next questions [BR] 
+  Search Results for "${First_Name} ${Last_Name}" 
 subquestion: |
+  Copy or write down the case name and docket number for your case [BR] 
+  
+  Docket Number Format: XXX-XX-12-3456789-X
+  
   ${ output }
+  
+   If you do not see your case you may need to search on the [State of Connecticut Judicial Branch Superior Court Case Look-up Site](http://civilinquiry.jud.ct.gov/)
+
 continue button field: copy_information
+back button: True
+back button label: |
+  Search again
 ---
 id: final attachment
 attachment:
