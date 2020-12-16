@@ -19,7 +19,7 @@ code: |
 ---
 id: intro screen
 question: |
-  Example Interview Integrating the Connecticut Superior Court Case Court Website Scraper 
+  Example Interview Integrating the Connecticut Superior Court Case Look-up Website Scraper 
 subquestion: | 
   **Disclaimer**: This interview is a demonstration of how the web scraper could be built into interviews to help users find their court information without having to leave the interview and follow separate instructions. It produces an example document and is for demonstration only. 
   
