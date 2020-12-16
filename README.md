@@ -1,3 +1,6 @@
+
+# Connecticut Superior Court Case Look-up Website Scraper
+
 # docassemble.CTLFinal
 
 A docassemble extension.
@@ -61,7 +64,7 @@ The Document Assembly Line, court clerks, and the users of courtformsonline.org.
 
 * Edge cases in the case_name regex where there is not two formal parties, such as an *In Re* case is not captured by the regex. This would disrupt the table as described above. This would need to be resolved prior to any launch.
 
-        Next Steps
+        Next Steps:
     
 Continuing to build on this exact model may not be beneficial. However, using this as a demonstration may further the conversation with the Massachusetts court. Building a more robust implementation for the Document Assembly Line based off of this model would result in a more usable task.   
 
