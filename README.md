@@ -34,11 +34,11 @@ The web scrapper takes simple search criteria, a single party's first name and l
 
 The Document Assembly Line, court clerks, and the users of courtformsonline.org. 
 
-**What works:** 
+**Good things:** 
 
 * It works – this scraper can be used for Connecticut civil, family, housing and small claims cases in the Superior Court. It would let a user find their case name and docket number quickly within the platform. It is a demonstration of how allowing scraping for these purposes can benefit individuals. I asked a tester how they would feel about using the results the response was that "Assuming I'm somewhat familiar with my case, this is great. I'd trust that answers were mine once I saw what I was looking for." It is true that the limited information requires that the user to have some recognition. Now that I have an understanding of how to built out a scraper I would want to build more pieces in and consider what information is pulled in more to make it most helpful. 
 
-* An early tester provided feedback that they felt a need for instruction on what the results tell them. They weren't sure why there were dashes between sections of the docket number and if they needed them or if that was because the column returned in a weird format. I was having trouble adding test to the subquestion for id: display result because it would cause a break in formatting in the table. However, I realized that I needed to add a line break in the module rather than the yml and it allowed me to add the subquestion with information. 
+* An early tester provided feedback that they felt a need for instruction on what the results tell them. They weren't sure why there were dashes between sections of the docket number and if they needed them or if that was because the column returned in a weird format. I was having trouble adding test to the subquestion for id: display result because it would cause a break in formatting in the table. However, I realized that I needed to add a line break in the module rather than the yml and it allowed me to add the subquestion with information and provide more help to the user. 
 
 
 **Things to work on:**
