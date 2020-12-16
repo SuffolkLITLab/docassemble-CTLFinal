@@ -10,6 +10,11 @@ Aubrie Souza, asouza@su.suffolk.edu
 
 This is intended for demonstration only. It produces an example document and is for demonstration only. It should not be implemented into existing interviews without refinement detailed below. 
 
+## Link to the repo: 
+
+Use this link to return to the full repo or copy it for a pull request.  
+https://github.com/SuffolkLITLab/docassemble-CTLFinal.git
+
 ## Watch a demo [here](https://drive.google.com/file/d/1kuxp9cIMHZ81zdmBuTUbrhzZKCH1d4bd/view?usp=sharing)
 
 Note: This video was made prior to most testing. Some of the pages have more information or instructions on them where users asked for it. The searching mechanism works the same as in this video. 
@@ -18,7 +23,7 @@ Note: This video was made prior to most testing. Some of the pages have more inf
 
 This project uses the python module mechanize, regex, and the yml file. This video walks through how those pieces work together to return the result.  
 
-## Project Biography
+# Project Biography
 
         TLDR:
 
