@@ -6,9 +6,17 @@ A docassemble extension.
 
 Aubrie Souza, asouza@su.suffolk.edu
 
-## Watch a Demo [Here](https://github.com/SuffolkLITLab/docassemble-CTLFinal/blob/main/Demo.mp4)
+## Disclaimer 
+
+This is fo It produces an example document and is for demonstration only. 
+
+## Watch a demo [here](https://drive.google.com/file/d/1kuxp9cIMHZ81zdmBuTUbrhzZKCH1d4bd/view?usp=sharing)
 
 Note: This video was made prior to most testing. Some of the pages have more information or instructions on them where users asked for it. The searching mechanism works the same as in this video. 
+
+## Watch a technical explanation [here](https://drive.google.com/file/d/1X6kBxrgeTFffkUJgtmP66jYEPYKIMaSQ/view?usp=sharing)
+
+This project uses the python module mechanize, regex, and the yml file. This video walks through how those pieces work together to return the result.  
 
 ## Project Biography
 
@@ -40,12 +48,11 @@ The Document Assembly Line, court clerks, and the users of courtformsonline.org.
 
 * An early tester provided feedback that they felt a need for instruction on what the results tell them. They weren't sure why there were dashes between sections of the docket number and if they needed them or if that was because the column returned in a weird format. I was having trouble adding test to the subquestion for id: display result because it would cause a break in formatting in the table. However, I realized that I needed to add a line break in the module rather than the yml and it allowed me to add the subquestion with information and provide more help to the user. 
 
-
 **Things to work on:**
 
 * The table is risk prone. Rather than creating sets that keeps the docket number paired with its corresponding case name, it runs two regex that separates them into categories. If there is a misalignment, all the cases below will be incorrect. Fixing this would require creating a regex that parses for both the docket and case name and then lower in the module separating the groups. 
 
-* Edge cases in the case_name regex where there is not two formal parties, such as an *In Re* case it is not captured by the regex, and it would disrupt the table as described above. This would need to be resolved prior to any launch.  
+* Edge cases in the case_name regex where there is not two formal parties, such as an *In Re* case it is not captured by the regex, and it would disrupt the table as described above. This would need to be resolved prior to any launch.
 
 **Research:**
 
@@ -88,3 +95,10 @@ Response:
 
 Yes! I was able to capture the links to each page with my regex but it when you tap on the hyperlink it is a dead link. My experience with capturing the proper parts of the HTML was too limited to make the links work in the time frame. I was so close. It would be helpful to allow the user to check that the case information presented matches with theirs by seeing the whole page. For example, I saw plenty case names that were the same, but had different docket numbers. It is definitely a needed feature and possible in the next iteration. 
 
+**Closing thoughts:** 
+
+I have had to pivot and reassess what was possible after deciding on this project. My original idea which was to return the same results but for the Massachusetts court website because my technical abilities limited me. I explored alternative jurisdictions that have adopted this project, but met the same issue with RECAPTCHA on the sites. I explored a few paths that would have made this prototype more impressive, such as brining in the link to each page, but wasn't able to reach my stretch goals in time. However, it is clear that they are obtainable with continued work. See the regex that captures the links (here)[https://regex101.com/r/GYWutc/2]. 
+
+That aside, I believe that if presented to the Massachusetts Court for demonstration it would progress the conversation between the Assembly Line and the Court where we have not had success convincing the court that access to masscourts.org through their API. Even if we could not build straight into their programs, permission to work around the RECAPTCHA would address the legal concerns. Additionally, permission is beneficial becuase it prevents the need to set a precedent. Scraping of court websites is not always a benefit. Permission in this singular use would avoid opening the doors to any and all web scraping. 
+
+In the end, I am excited that I built the technical skill and understanding. That also means, I know its not ready for use. It is making too many assumptions,   all of the search criteria should be brought in for the user to determine, and it should be parsing the case namea and docket numbers together rather than making them their own lists. Howevever, having gained eugh understanding to know that it isn't ready is also a  success. Its important to know where our creations fail and I certainly am ready to continue to build to eliminate as many of those failures as possible to make this a useable tool. 
