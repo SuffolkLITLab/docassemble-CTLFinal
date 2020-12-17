@@ -1,4 +1,3 @@
-
 # Connecticut Superior Court Case Look-up Website Scraper
 
 # docassemble.CTLFinal
