@@ -24,7 +24,11 @@ Note: This video was made prior to most testing. Some of the pages have more inf
 
 ## Watch a technical explanation [here](https://drive.google.com/file/d/1X6kBxrgeTFffkUJgtmP66jYEPYKIMaSQ/view?usp=sharing)
 
-This project uses the python module mechanize, regex, and the yml file. This video walks through how those pieces work together to return the result.  
+This project uses the python module mechanize, regex, and the yml file. This video walks through how those pieces work together to return the result. 
+
+## Watch my original pitch [here](https://drive.google.com/file/d/1PCqd_AZyxCZU59ygANKNkfzxt1YNAbPh/view?usp=sharing) 
+
+The slide deck is available for download [here](https://drive.google.com/file/d/1rNCiec1leMr8QZOwXS6NqtKnrv_XE6QU/view?usp=sharing) 
 
 ## Project Biography
 
