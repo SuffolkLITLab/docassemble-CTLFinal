@@ -31,7 +31,7 @@ The slide deck is available for download [here](https://drive.google.com/file/d/
 
 ## Project Biography
 
-        TLDR:
+        TL;DR:
 
 The Document Assembly Line Project is producing mobile friendly, online court forms that can be downloaded or sent directly to Massachusetts courts. This repo contains a prototype to demonstrate that the existing forms could implement a web scrapper to assist the users in filling out their form inside the interview framework rather than directing them to gather the information themselves from court websites. You will notice that this scrapes the Connecticut case look up site rather than Massachusetts; the Massachusetts site has a reCAPTCHA that presented technical challenges not within my abilities at the start of the project. 
     
