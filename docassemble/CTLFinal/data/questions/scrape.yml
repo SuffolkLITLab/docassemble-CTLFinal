@@ -29,7 +29,9 @@ continue button field: intro_screen
 id: need help?
 question: | 
   Do you know your docket number? 
-yesno: knows_docket
+fields:
+  - no label: knows_docket
+    datatype: yesnoradio
 ---
 id: search criteria
 question: |  
@@ -48,7 +50,7 @@ subquestion: |
 fields:
   - no label: docket_number
 ---
-id: docket number
+id: "docket number 2"
 question: |
   What is the case name for your case?
 fields:
